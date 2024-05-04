@@ -1,0 +1,65 @@
+{% extends "./base.html"%}
+
+{% block content %}
+
+<h1>Poliza: {{ poliza.poliza}} -  {{ poliza.asegurado}}</h1>
+
+<!-- contruir un div con 4 grid y otro con 8 grid
+    en el primer grid poner un formulario para ingreso de datos de nombre y CUIL y submit
+
+    en el segundo grid una tabla con id, nombre, CUIL boton editar y eliminar
+
+-->
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-4">
+            <form action="/registrarEmpleado/{{poliza.id}}" method="post">
+                {% csrf_token %}
+               
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Empleado</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="CUIL" class="form-label">CUIL</label>
+                    <input type="text" class="form-control" id="CUIL" name="CUIL">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+        <div class="col-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre Empleado</th>
+                        <th scope="col">CUIL</th>
+                        <th scope="col"></th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for empleado in empleados%}
+                    <tr>
+                       
+                        <td>{{empleado.id }}</td>
+                        <td>{{ empleado.nombre }}</td>
+                        <td>{{ empleado.CUIL }}</td>
+                        <td><a href="/edicionEmpleado/{{empleado.id}}">Editar</a></td>
+                        <td><a href="/eliminarEmpleado/{{empleado.id}}/{{poliza.id}}" class="btnEliminacion">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

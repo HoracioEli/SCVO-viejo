@@ -1,0 +1,31 @@
+{% extends "./base.html"%}
+
+{% block content %}
+
+<h1>Edición de Poliza</h1>
+
+<form action="/editarPoliza/{{poliza.id}}" " method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <input hidden type="text" class="form-control" id="id" name="id" value="{{poliza.id}}">
+        <label for="poliza" class="form-label">Poliza</label>
+        <input type="text" class="form-control" id="poliza" name="poliza" value="{{poliza.poliza}}">
+    </div>
+    <div class="mb-3">
+        <label for="asegurado" class="form-label">Asegurado</label>
+        <input type="text" class="form-control" id="asegurado" name="asegurado" value="{{poliza.asegurado}}">
+    </div>
+    <div class="mb-3">
+        <label for="CUIT" class="form-label">CUIT</label>
+        <input type="text" class="form-control" id="CUIT" name="CUIT" value="{{poliza.CUIT}}">
+    </div>
+    <div class="mb-3">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input type="date" class="form-control" id="fecha" name="fecha" value="{{poliza.fecha|date:'Y-m-d'}}">
+
+
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}

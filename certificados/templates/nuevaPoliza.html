@@ -1,0 +1,28 @@
+{% extends "./base.html"%}
+
+{% block content %}
+
+<h1>Nueva Poliza</h1>
+
+<form action="/registrarPoliza/" " method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="poliza" class="form-label">Poliza</label>
+        <input type="text" class="form-control" id="poliza" name="poliza">
+    </div>
+    <div class="mb-3">
+        <label for="asegurado" class="form-label">Asegurado</label>
+        <input type="text" class="form-control" id="asegurado" name="asegurado">
+    </div>
+    <div class="mb-3">
+        <label for="CUIT" class="form-label">CUIT</label>
+        <input type="text" class="form-control" id="CUIT" name="CUIT">
+    </div>
+    <div class="mb-3">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input type="date" class="form-control" id="fecha" name="fecha">
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}

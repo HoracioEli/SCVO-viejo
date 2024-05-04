@@ -1,0 +1,77 @@
+{% extends "./base.html" %}
+
+
+{% block content %}
+
+<!-- hacer un formulario con bootstrap 5 que contenga un input de texto para buscar y un boton en la misma linea para buscar -->
+
+<form class="d-flex py-5" action="#" method="get">
+  <input class="form-control me-2" type="search"
+    placeholder="Buscar poliza por: asegurado, CUIT, o Numero de poliza (04-750 ó 01-04-17-75000750)"
+    aria-label="Search" name="poliza">
+  <button class="btn btn-outline-success" type="submit">Buscar</button>
+</form>
+
+
+
+<h1>Listado de polizas</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Poliza</th>
+      <th scope="col">Asegurado</th>
+      <th scope="col">CUIT</th>
+      <th scope="col">Fecha Inicio</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for poliza in polizas %}
+
+
+    <tr>
+      <th scope="row">{{poliza.id}}</th>
+      <td>{{poliza.poliza}}</td>
+      <td>{{poliza.asegurado}}</td>
+      <td>{{poliza.CUIT}}</td>
+      <td>{{poliza.fecha}}</td>
+      <td>
+        <a href="/listadoEmpleados/{{poliza.id}}"><button class="btn btn-outline-success">Empleados</button></a>
+        <a href="/edicionPoliza/{{poliza.id}}"><button class="btn btn-primary">Editar</button></a>
+        <a href="/eliminacionPoliza/{{poliza.id}}"><button class="btn btn-danger btnEliminacion">Eliminar</button></a>
+
+
+      </td>
+    </tr>
+    </tr>
+
+
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
+
+
+< <tr>
+  <th scope="row">1</th>
+  <td>Mark</td>
+  <td>Otto</td>
+  <td>@mdo</td>
+  </tr>
+  <tr>
+    <th scope="row">2</th>
+    <td>Jacob</td>
+    <td>Thornton</td>
+    <td>@fat</td>
+  </tr>
+  <tr>
+    <th scope="row">3</th>
+    <td colspan="2">Larry the Bird</td>
+    <td>@twitter</td>
+  </tr>
+  </tbody>
+  </table>
